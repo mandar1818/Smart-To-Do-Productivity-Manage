@@ -1,0 +1,16 @@
+{
+  "name": "smart-productivity-manager",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "client": "npm --prefix client run dev",
+    "build:client": "npm --prefix client run build",
+    "preview:client": "npm --prefix client run preview",
+    "server": "npm --prefix server run dev",
+    "test:server": "npm --prefix server run test"
+  }
+}
