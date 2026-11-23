@@ -43,7 +43,7 @@ export function ProductivityCharts() {
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-1">
-              Task completion throughput across the recent cycle
+              Daily task completions over the past 7 days
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs text-slate-600 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-200/60">

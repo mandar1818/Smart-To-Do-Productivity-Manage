@@ -15,7 +15,7 @@ export function DashboardStats() {
       >
         <div className="flex items-center justify-between">
           <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-            Total Backlog
+            Total tasks
           </span>
           <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center transition-transform group-hover:scale-105">
             <ListTodo className="w-4 h-4" />
@@ -67,7 +67,7 @@ export function DashboardStats() {
         </div>
 
         <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-          <span>Overall velocity</span>
+          <span>Overall completion</span>
           <span className="text-emerald-700 font-semibold">{stats.completed}/{stats.total} tasks</span>
         </div>
       </div>
@@ -79,7 +79,7 @@ export function DashboardStats() {
       >
         <div className="flex items-center justify-between">
           <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-            Pending Execution
+            Pending tasks
           </span>
           <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center transition-transform group-hover:scale-105">
             <Clock className="w-4 h-4" />
@@ -110,7 +110,7 @@ export function DashboardStats() {
       >
         <div className="flex items-center justify-between">
           <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-            Overdue Triage
+            Overdue tasks
           </span>
           <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105 ${
             stats.overdue > 0 ? 'bg-rose-50 text-rose-600' : 'bg-slate-100 text-slate-500'

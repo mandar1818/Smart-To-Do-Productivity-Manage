@@ -47,14 +47,14 @@ export function CategoriesPage() {
         <div>
           <div className="flex items-center gap-2.5">
             <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-              Workspaces & Categories
+              Categories
             </h1>
             <span className="text-xs font-mono font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
               {categories.length} active
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Functional task domains, project boundaries, and execution velocity
+            Organize your tasks by project, area, or context
           </p>
         </div>
 

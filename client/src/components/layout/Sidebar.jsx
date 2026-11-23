@@ -139,15 +139,10 @@ export function Sidebar({ className, onCloseMobile }) {
             <Sparkles className="w-4 h-4 stroke-[2.2]" />
           </div>
           <div>
-            <div className="flex items-center gap-1.5">
-              <span className="text-sm font-bold text-white tracking-tight">
-                Smart Task
-              </span>
-              <span className="text-[10px] font-semibold text-indigo-300 bg-indigo-500/20 border border-indigo-400/30 px-1.5 py-0.2 rounded-full uppercase tracking-wider">
-                Pro
-              </span>
-            </div>
-            <p className="text-[10px] text-slate-500 leading-none">Productivity Suite</p>
+            <span className="text-sm font-bold text-white tracking-tight">
+              Smart Task
+            </span>
+            <p className="text-[10px] text-slate-500 leading-none mt-0.5">Productivity Manager</p>
           </div>
         </div>
       </div>
@@ -248,16 +243,21 @@ export function Sidebar({ className, onCloseMobile }) {
             </button>
           </div>
         ) : (
-          <button
-            onClick={() => {
-              openAuthModal('login');
-              if (onCloseMobile) onCloseMobile();
-            }}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-[#111827] border border-indigo-500/30 text-xs font-semibold text-indigo-300 hover:bg-indigo-500/20 hover:text-white transition-all cursor-pointer shadow-sm"
-          >
-            <LogIn className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Sign in to Workspace</span>
-          </button>
+          <div className="flex items-center justify-between p-2 rounded-lg bg-[#111827] border border-[#1e293b]">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
+              <span className="text-xs text-slate-400 font-medium">Demo Workspace</span>
+            </div>
+            <button
+              onClick={() => {
+                openAuthModal('login');
+                if (onCloseMobile) onCloseMobile();
+              }}
+              className="text-xs font-medium text-indigo-400 hover:text-indigo-300 transition-colors cursor-pointer"
+            >
+              Sign in
+            </button>
+          </div>
         )}
       </div>
     </aside>

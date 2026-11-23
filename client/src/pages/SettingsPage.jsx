@@ -167,9 +167,9 @@ export function SettingsPage() {
 
         <div className="divide-y divide-slate-100">
           {[
-            { key: 'dailyBriefing', label: 'Daily Agenda Briefing', desc: 'Receive morning summaries of tasks due today' },
-            { key: 'overdueAlerts', label: 'Overdue Task Escalations', desc: 'Notify immediately when high-priority tasks exceed target dates' },
-            { key: 'weeklyReport', label: 'Weekly Velocity Summary', desc: 'Receive weekly throughput analytics and completion rates' },
+            { key: 'dailyBriefing', label: 'Daily task summary', desc: 'Receive morning summaries of tasks due today' },
+            { key: 'overdueAlerts', label: 'Overdue task alerts', desc: 'Notify immediately when high-priority tasks are overdue' },
+            { key: 'weeklyReport', label: 'Weekly progress report', desc: 'Receive weekly summaries of completed tasks and progress' },
           ].map((item) => (
             <div key={item.key} className="py-3.5 flex items-center justify-between text-xs">
               <div className="pr-4">

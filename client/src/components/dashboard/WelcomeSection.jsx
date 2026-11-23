@@ -5,7 +5,7 @@ import { Button } from '../common/Button';
 import { Plus, Calendar, AlertCircle, CheckCircle2, TrendingUp, Sparkles } from 'lucide-react';
 
 export function WelcomeSection() {
-  const { user, stats, todayTasks, openCreateModal } = useTasks();
+  const { user, stats, todayTasks, openCreateModal, isAuthenticated } = useTasks();
   const greeting = getGreeting();
   const dateDisplay = getFormattedTodayDisplay();
   const displayName = user?.name ? user.name.split(' ')[0] : null;
@@ -29,6 +29,13 @@ export function WelcomeSection() {
             <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
             <span>Daily Focus</span>
           </span>
+
+          {!isAuthenticated && (
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-medium border border-amber-200/60">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              <span>Demo Workspace</span>
+            </span>
+          )}
         </div>
 
         <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">

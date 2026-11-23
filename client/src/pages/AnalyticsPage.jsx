@@ -19,7 +19,7 @@ function CustomTooltip({ active, payload, label }) {
         <p className="font-medium text-slate-400">{label}</p>
         <p className="text-white mt-1 flex items-center gap-1.5 font-semibold">
           <span className="w-2 h-2 rounded-full bg-indigo-400 inline-block" />
-          Completed: {payload[0]?.value} tasks
+          Completed: {payload[0]?.value}
         </p>
       </div>
     );
@@ -51,11 +51,11 @@ export function AnalyticsPage() {
         <div>
           <div className="flex items-center gap-2.5">
             <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-              Productivity Intelligence & Metrics
+              Your productivity
             </h1>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Real-time throughput analytics, priority breakdown, and domain resolution velocity
+            Overview of completed tasks, active queue, and priority distribution
           </p>
         </div>
       </div>
@@ -64,7 +64,7 @@ export function AnalyticsPage() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <div className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-slate-600">Completion Velocity</p>
+            <p className="text-xs font-semibold text-slate-600">Completion rate</p>
             <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
               <TrendingUp className="w-4 h-4" />
             </div>
@@ -76,13 +76,13 @@ export function AnalyticsPage() {
             <div className="mt-2">
               <ProgressBar value={stats.completionRate} height="h-1.5" barColor="bg-indigo-600" />
             </div>
-            <span className="text-[11px] text-slate-400 mt-1.5 block">Resolved vs total backlog</span>
+            <span className="text-[11px] text-slate-400 mt-1.5 block">Completed of total tasks</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-slate-600">Completed Tasks</p>
+            <p className="text-xs font-semibold text-slate-600">Completed tasks</p>
             <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
               <CheckCircle2 className="w-4 h-4" />
             </div>
@@ -97,7 +97,7 @@ export function AnalyticsPage() {
 
         <div className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-slate-600">Active Backlog</p>
+            <p className="text-xs font-semibold text-slate-600">Pending tasks</p>
             <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
               <Clock className="w-4 h-4" />
             </div>
@@ -106,13 +106,13 @@ export function AnalyticsPage() {
             <p className="text-3xl font-bold text-slate-900 tracking-tight font-mono">
               {stats.pending}
             </p>
-            <span className="text-[11px] text-slate-400 mt-2 block">Pending active execution</span>
+            <span className="text-[11px] text-slate-400 mt-2 block">Tasks waiting to be done</span>
           </div>
         </div>
 
         <div className="bg-white rounded-xl p-5 border border-slate-200/90 shadow-sm flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <p className="text-xs font-semibold text-slate-600">Overdue Attention</p>
+            <p className="text-xs font-semibold text-slate-600">Overdue tasks</p>
             <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${stats.overdue > 0 ? 'bg-rose-50 text-rose-600' : 'bg-slate-100 text-slate-500'}`}>
               <AlertTriangle className="w-4 h-4" />
             </div>
@@ -134,14 +134,11 @@ export function AnalyticsPage() {
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-sm font-semibold text-slate-900">
-                  Weekly Completion Throughput
+                  Tasks completed this week
                 </h2>
-                <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
-                  Daily Cadence
-                </span>
               </div>
               <p className="text-xs text-slate-500 mt-1">
-                Completed work units registered over the previous 7 days
+                Daily task completions over the past 7 days
               </p>
             </div>
             <span className="text-xs text-slate-500 bg-slate-50 px-2.5 py-1 rounded-md border border-slate-200/60 font-medium">
@@ -149,7 +146,7 @@ export function AnalyticsPage() {
             </span>
           </div>
 
-          <div className="h-60 w-full pt-2">
+          <div className="h-48 w-full pt-2">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart
                 data={weeklyCompletionTrend}
@@ -186,10 +183,10 @@ export function AnalyticsPage() {
         <div className="bg-white rounded-xl p-5 sm:p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between">
           <div>
             <h2 className="text-sm font-semibold text-slate-900">
-              Priority Urgency Breakdown
+              Tasks by priority
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              Active backlog distribution by urgency rating
+              Distribution of active tasks by urgency
             </p>
           </div>
 
@@ -239,14 +236,14 @@ export function AnalyticsPage() {
         <div>
           <div className="flex items-center gap-2">
             <h2 className="text-sm font-semibold text-slate-900">
-              Domain & Category Resolution Table
+              Tasks by category
             </h2>
             <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
-              {categoryStats.length} Domains
+              {categoryStats.length} Categories
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Completion percentage and task workload across project domains
+            Completion rate and total tasks across each category
           </p>
         </div>
 

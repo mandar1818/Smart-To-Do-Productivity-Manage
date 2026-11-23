@@ -6,7 +6,7 @@ import { cn } from '../../utils/helpers';
 export function NotificationDropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const { notifications, markAllNotificationsRead } = useTasks();
+  const { notifications, markAllNotificationsRead, isAuthenticated } = useTasks();
 
   const unreadCount = notifications.filter((n) => n.unread).length;
 
@@ -59,7 +59,7 @@ export function NotificationDropdown() {
           <div className="max-h-72 overflow-y-auto divide-y divide-slate-100">
             {notifications.length === 0 ? (
               <div className="py-8 text-center text-xs text-slate-400">
-                No active alerts or overdue items
+                {!isAuthenticated ? 'Sign in to view notifications' : 'No active alerts or overdue items'}
               </div>
             ) : (
               notifications.map((item) => (

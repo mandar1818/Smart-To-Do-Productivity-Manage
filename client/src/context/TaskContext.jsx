@@ -266,6 +266,7 @@ export function TaskProvider({ children }) {
 
   // Real notifications derived dynamically from user's current tasks
   const notifications = useMemo(() => {
+    if (!isAuthenticated) return [];
     const list = [];
     const overdue = tasks.filter((t) => isTaskOverdue(t.dueDate, t.completed));
     const todayPending = tasks.filter((t) => isTaskToday(t.dueDate) && !t.completed);
@@ -295,7 +296,7 @@ export function TaskProvider({ children }) {
     }
 
     return list;
-  }, [tasks, readNotificationIds]);
+  }, [tasks, readNotificationIds, isAuthenticated]);
 
   const markAllNotificationsRead = () => {
     setReadNotificationIds(new Set(notifications.map((n) => n.id)));
