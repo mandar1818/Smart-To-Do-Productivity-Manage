@@ -12,17 +12,17 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3000';
-
-// Connect to MongoDB
-connectDB();
+const CLIENT_URL = (process.env.CLIENT_URL || 'http://localhost:3000').replace(/\/+$/, '');
+const isProduction = process.env.NODE_ENV === 'production';
+const isMain = !process.argv[1] || process.argv[1].endsWith('server.js') || process.argv[1].endsWith('server');
 
 // CORS configuration (Supporting HTTP-only credentials)
 app.use(
   cors({
     origin: (origin, callback) => {
+      const cleanOrigin = origin ? origin.replace(/\/+$/, '') : '';
       // Allow requests with no origin (like mobile apps, curl, Postman) or matching CLIENT_URL
-      if (!origin || origin === CLIENT_URL || origin.startsWith('http://localhost')) {
+      if (!origin || cleanOrigin === CLIENT_URL || origin.startsWith('http://localhost') || origin.startsWith('http://127.0.0.1')) {
         callback(null, true);
       } else {
         callback(new Error('CORS policy: Not allowed by CORS'));
@@ -59,12 +59,24 @@ app.use(errorHandler);
 
 // Listen on configured port when run directly
 let server;
-const isMain = !process.argv[1] || process.argv[1].endsWith('server.js') || process.argv[1].endsWith('server');
-if (isMain && process.env.NODE_ENV !== 'test') {
-  server = app.listen(PORT, '127.0.0.1', () => {
-    console.log(`Smart Productivity Manager Server running on port ${PORT}`);
-  });
-}
+
+const startServer = async () => {
+  try {
+    await connectDB();
+    if (isMain && process.env.NODE_ENV !== 'test') {
+      server = app.listen(PORT, '0.0.0.0', () => {
+        console.log(`Smart Productivity Manager Server running on port ${PORT}`);
+      });
+    }
+  } catch (error) {
+    if (isProduction) {
+      console.error('FATAL: Server startup aborted due to database connection failure.');
+      process.exit(1);
+    }
+  }
+};
+
+startServer();
 
 export { server };
 export default app;
