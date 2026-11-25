@@ -2,6 +2,7 @@
   "name": "smart-productivity-manager",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "workspaces": [
     "client",
     "server"
@@ -11,6 +12,7 @@
     "build:client": "npm --prefix client run build",
     "preview:client": "npm --prefix client run preview",
     "server": "npm --prefix server run dev",
-    "test:server": "npm --prefix server run test"
+    "test:server": "npm --prefix server run test",
+    "ops:verify": "node scripts/ops.js verify"
   }
 }
